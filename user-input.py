@@ -23,9 +23,9 @@ default_slider_value = 50
 default_checkbox_value = False
 
 # Use stored values or fall back to defaults
-user_input = st.text_input("Enter some text:", value=stored_input or default_input)
-slider_value = st.slider("Select a number:", 0, 100, value=stored_slider_value or default_slider_value)
-checkbox_value = st.checkbox("Check this box", value=stored_checkbox_value or default_checkbox_value)
+user_input = st.text_input("Enter some text:", value=stored_input or default_input, key="user_input_key")
+slider_value = st.slider("Select a number:", 0, 100, value=stored_slider_value or default_slider_value, key="slider_key")
+checkbox_value = st.checkbox("Check this box", value=stored_checkbox_value or default_checkbox_value, key="checkbox_key")
 
 # Debug: Show the current input values
 st.write(f"Current input (text): {user_input}")
