@@ -1,6 +1,5 @@
 import streamlit as st
 from streamlit_local_storage import LocalStorage
-import random
 
 # Initialize local storage
 local_storage = LocalStorage()
@@ -27,9 +26,9 @@ if stored_checkbox_value is None:
     stored_checkbox_value = default_checkbox_value
 
 # Now, let the user interact with the widgets
-user_input = st.text_input("Enter some text:", value=stored_input, key="user_input_key")
-slider_value = st.slider("Select a number:", 0, 100, value=stored_slider_value, key="slider_key")
-checkbox_value = st.checkbox("Check this box", value=stored_checkbox_value, key="checkbox_key")
+user_input = st.text_input("Enter some text:", value=stored_input, key="user_input_unique_key")
+slider_value = st.slider("Select a number:", 0, 100, value=stored_slider_value, key="slider_unique_key")
+checkbox_value = st.checkbox("Check this box", value=stored_checkbox_value, key="checkbox_unique_key")
 
 # Debug: Show the current input values
 st.write(f"Current input (text): {user_input}")
