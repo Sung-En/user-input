@@ -30,18 +30,31 @@ if "slider_value" not in st.session_state:
 if "checkbox_value" not in st.session_state:
     st.session_state.checkbox_value = stored_checkbox_value
 
-# Add buttons to load settings
-if st.button("Load User Settings"):
-    # Load the saved user settings into session state without changing the input fields
-    st.session_state.user_input = stored_input
-    st.session_state.slider_value = stored_slider_value
-    st.session_state.checkbox_value = stored_checkbox_value
+# Add buttons to load settings and save settings at the top
+col1, col2, col3 = st.columns([1, 1, 2])  # 3 columns for better alignment
+with col1:
+    if st.button("Load User Settings"):
+        # Load the saved user settings into session state
+        st.session_state.user_input = stored_input
+        st.session_state.slider_value = stored_slider_value
+        st.session_state.checkbox_value = stored_checkbox_value
 
-if st.button("Load Default Settings"):
-    # Load the default settings into session state
-    st.session_state.user_input = default_input
-    st.session_state.slider_value = default_slider_value
-    st.session_state.checkbox_value = default_checkbox_value
+with col2:
+    if st.button("Load Default Settings"):
+        # Load the default settings into session state
+        st.session_state.user_input = default_input
+        st.session_state.slider_value = default_slider_value
+        st.session_state.checkbox_value = default_checkbox_value
+
+with col3:
+    if st.button("Save Settings"):
+        # Save user input, slider value, and checkbox value to local storage
+        local_storage.setItem("user_input", st.session_state.user_input, key="user_input_key")
+        local_storage.setItem("slider_value", st.session_state.slider_value, key="slider_key")
+        local_storage.setItem("checkbox_value", st.session_state.checkbox_value, key="checkbox_key")
+
+        # Show confirmation of the settings saved
+        st.write("Settings saved to local storage")
 
 # Display the text to show which settings are loaded
 st.write(f"User saved text: {stored_input}")  # Now this shows the saved value directly from local storage
@@ -57,20 +70,7 @@ st.write(f"Current text input: {user_input}")
 st.write(f"Current slider value: {slider_value}")
 st.write(f"Current checkbox value: {checkbox_value}")
 
-# Save the updated settings to local storage when "Save Settings" is clicked
-if st.button("Save Settings"):
-    # Save user input, slider value, and checkbox value to local storage
-    local_storage.setItem("user_input", user_input, key="user_input_key")
-    local_storage.setItem("slider_value", slider_value, key="slider_key")
-    local_storage.setItem("checkbox_value", checkbox_value, key="checkbox_key")
-
-    # Update session state with the new values (this will make the UI reflect the changes)
-    st.session_state.user_input = user_input
-    st.session_state.slider_value = slider_value
-    st.session_state.checkbox_value = checkbox_value
-
-    # Re-fetch saved settings to update the displayed "User saved text"
-    stored_input = local_storage.getItem("user_input")
-
-    # Show confirmation of the settings saved
-    st.write("Settings saved to local storage")
+# Update the session state with the user's new input after any changes
+st.session_state.user_input = user_input
+st.session_state.slider_value = slider_value
+st.session_state.checkbox_value = checkbox_value
