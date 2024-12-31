@@ -22,9 +22,17 @@ if stored_slider_value is None:
 if stored_checkbox_value is None:
     stored_checkbox_value = default_checkbox_value
 
-# Streamlit widgets
-st.button("Load User Settings")
-st.button("Load Default Settings")
+# Create two columns
+col1, col2 = st.columns([1, 2])
+
+# Place buttons in the first column
+with col1:
+    st.button("Load User Settings")
+    st.button("Load Default Settings")
+
+# Place text in the second column (right side)
+with col2:
+    st.write(f"Default text: {default_input}")
 
 # Streamlit widgets
 user_input = st.text_input("Enter some text:", value=stored_input)
