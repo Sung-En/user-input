@@ -59,9 +59,9 @@ slider_value = st.slider("Select a number:", 0, 100, value=st.session_state.slid
 checkbox_value = st.checkbox("Check this box", value=st.session_state.checkbox_value)
 
 # Display the current values
-st.write(f"Current text input: {st.session_state.user_input}")
-st.write(f"Current slider value: {st.session_state.slider_value}")
-st.write(f"Current checkbox value: {st.session_state.checkbox_value}")
+st.write(f"Current text input: {user_input}")
+st.write(f"Current slider value: {slider_value}")
+st.write(f"Current checkbox value: {checkbox_value}")
 
 # Save the updated settings to local storage when "Save Settings" is clicked
 if st.button("Save Settings"):
