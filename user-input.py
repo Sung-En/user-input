@@ -69,5 +69,6 @@ if st.button("Save Settings"):
     st.session_state.slider_value = slider_value
     st.session_state.checkbox_value = checkbox_value
 
-    # Show confirmation
-    st.write("Settings saved to local storage")
+    # Show confirmation and immediately reflect the updated user input
+    st.write(f"Settings saved to local storage")
+    st.write(f"User saved text: {st.session_state.user_input}")
