@@ -22,20 +22,18 @@ if stored_slider_value is None:
 if stored_checkbox_value is None:
     stored_checkbox_value = default_checkbox_value
 
-# Create two columns
-col1, col2 = st.columns([1, 2])
+# Create two columns for aligning the buttons and text
+col1, col2 = st.columns([1, 4])
 
-# Place buttons and text in the same row
+# Place buttons and the default text in the same row
 with col1:
     st.button("Load User Settings")
-    load_default_button = st.button("Load Default Settings")
+    st.button("Load Default Settings")
 
 with col2:
-    # Align the default text right next to the button
-    if load_default_button:
-        st.write(default_input)
+    st.write(f"{default_input}")  # Display only the default text next to the button
 
-# Streamlit widgets
+# Streamlit widgets for user input
 user_input = st.text_input("Enter some text:", value=stored_input)
 slider_value = st.slider("Select a number:", 0, 100, value=stored_slider_value)
 checkbox_value = st.checkbox("Check this box", value=stored_checkbox_value)
@@ -45,7 +43,7 @@ st.write(f"Current text input: {user_input}")
 st.write(f"Current slider value: {slider_value}")
 st.write(f"Current checkbox value: {checkbox_value}")
 
-# Save the updated settings to local storage when button is pressed
+# Save the updated settings to local storage when the "Save Settings" button is pressed
 if st.button("Save Settings"):
     local_storage.setItem("user_input", user_input, key="user_input_key")
     local_storage.setItem("slider_value", slider_value, key="slider_key")
