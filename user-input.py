@@ -34,11 +34,10 @@ if "checkbox_value" not in st.session_state:
 if st.button("Load User Settings"):
     # Load the saved user settings into session state without changing the input fields
     st.session_state.user_input = stored_input
-    #st.session_state.stored_input = stored_input
     st.session_state.slider_value = stored_slider_value
     st.session_state.checkbox_value = stored_checkbox_value
 
-st.write(f"User saved text: {st.session_state.user_input}")
+st.write(f"User saved text: {stored_input}")
 
 if st.button("Load Default Settings"):
     # Load the default settings into session state
@@ -69,7 +68,6 @@ if st.button("Save Settings"):
 
     # Update session state with the new values
     st.session_state.user_input = user_input
-    #st.session_state.stored_input = user_input
     st.session_state.slider_value = slider_value
     st.session_state.checkbox_value = checkbox_value
 
