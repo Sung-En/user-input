@@ -22,16 +22,16 @@ if stored_slider_value is None:
 if stored_checkbox_value is None:
     stored_checkbox_value = default_checkbox_value
 
-# Create two columns for aligning the buttons and text
-col1, col2 = st.columns([1, 4])
+# Create two columns to align the button and text
+col1, col2 = st.columns([1, 2])  # Adjust the width ratio as per your need
 
 # Place buttons and the default text in the same row
 with col1:
-    st.button("Load User Settings")
-    st.button("Load Default Settings")
+    load_user_settings = st.button("Load User Settings")
+    load_default_settings = st.button("Load Default Settings")
 
 with col2:
-    st.write(f"{default_input}")  # Display only the default text next to the button
+    st.write(default_input)  # Display default text next to the Load Default button
 
 # Streamlit widgets for user input
 user_input = st.text_input("Enter some text:", value=stored_input)
