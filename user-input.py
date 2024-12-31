@@ -27,12 +27,28 @@ user_input = st.text_input("Enter some text:", value=stored_input)
 slider_value = st.slider("Select a number:", 0, 100, value=stored_slider_value)
 checkbox_value = st.checkbox("Check this box", value=stored_checkbox_value)
 
-# Display the input values
+# Add buttons for loading settings
+load_user_settings = st.button("Load User Settings")
+load_default_settings = st.button("Load Default Settings")
+
+# When Load User Settings is clicked, load the user saved settings
+if load_user_settings:
+    user_input = stored_input
+    slider_value = stored_slider_value
+    checkbox_value = stored_checkbox_value
+
+# When Load Default Settings is clicked, load the default settings
+if load_default_settings:
+    user_input = default_input
+    slider_value = default_slider_value
+    checkbox_value = default_checkbox_value
+
+# Display the current settings
 st.write(f"Current text input: {user_input}")
 st.write(f"Current slider value: {slider_value}")
 st.write(f"Current checkbox value: {checkbox_value}")
 
-# Save the updated settings to local storage when button is pressed
+# Save the updated settings to local storage when the Save Settings button is pressed
 if st.button("Save Settings"):
     local_storage.setItem("user_input", user_input, key="user_input_key")
     local_storage.setItem("slider_value", slider_value, key="slider_key")
