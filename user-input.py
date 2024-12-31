@@ -32,7 +32,7 @@ if "checkbox_value" not in st.session_state:
 
 # Add buttons to load settings
 if st.button("Load User Settings"):
-    # Load the saved user settings into session state
+    # Load the saved user settings into session state without changing the input fields
     st.session_state.user_input = stored_input
     st.session_state.slider_value = stored_slider_value
     st.session_state.checkbox_value = stored_checkbox_value
@@ -44,7 +44,7 @@ if st.button("Load Default Settings"):
     st.session_state.checkbox_value = default_checkbox_value
 
 # Display the text to show which settings are loaded
-st.write(f"User saved text: {st.session_state.user_input}")
+st.write(f"User saved text: {stored_input}")
 st.write(f"Default text: {default_input}")
 
 # Streamlit widgets for user input
