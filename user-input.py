@@ -25,14 +25,15 @@ if stored_checkbox_value is None:
 # Create two columns
 col1, col2 = st.columns([1, 2])
 
-# Place buttons in the first column
+# Place buttons and text in the same row
 with col1:
     st.button("Load User Settings")
-    st.button("Load Default Settings")
+    load_default_button = st.button("Load Default Settings")
 
-# Place text in the second column (right side)
 with col2:
-    st.write(f"Default text: {default_input}")
+    # Align the default text right next to the button
+    if load_default_button:
+        st.write(default_input)
 
 # Streamlit widgets
 user_input = st.text_input("Enter some text:", value=stored_input)
