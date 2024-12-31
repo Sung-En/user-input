@@ -23,6 +23,10 @@ if stored_checkbox_value is None:
     stored_checkbox_value = default_checkbox_value
 
 # Streamlit widgets
+st.button("Load User Settings")
+st.button("Load Default Settings")
+
+# Streamlit widgets
 user_input = st.text_input("Enter some text:", value=stored_input)
 slider_value = st.slider("Select a number:", 0, 100, value=stored_slider_value)
 checkbox_value = st.checkbox("Check this box", value=stored_checkbox_value)
