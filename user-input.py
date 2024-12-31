@@ -77,3 +77,5 @@ if st.button("Save Settings"):
 
     # Show confirmation of the settings saved
     st.write("Settings saved to local storage")
+
+    st.rerun()
