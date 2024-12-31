@@ -71,6 +71,3 @@ if st.button("Save Settings"):
 
     # Show confirmation of the settings saved
     st.write("Settings saved to local storage")
-
-    # Automatically rerun the script (this will reflect the updated user input immediately)
-    st.experimental_rerun()  # Forces a refresh of the entire app
