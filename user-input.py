@@ -38,6 +38,7 @@ if st.button("Load User Settings"):
     st.session_state.checkbox_value = stored_checkbox_value
     # Rerun the app to reflect changes immediately
     st.rerun()
+    st.rerun()
 
 # Display the text to show which settings are loaded
 st.write(f"User saved text: {stored_input}")
@@ -48,6 +49,7 @@ if st.button("Load Default Settings"):
     st.session_state.slider_value = default_slider_value
     st.session_state.checkbox_value = default_checkbox_value
     # Rerun the app to reflect changes immediately
+    st.rerun()
     st.rerun()
 
 # Display the default text value
@@ -78,4 +80,5 @@ if st.button("Save Settings"):
     # Show confirmation of the settings saved
     st.write("Settings saved to local storage")
 
+    st.rerun()
     st.rerun()
