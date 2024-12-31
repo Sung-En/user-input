@@ -4,17 +4,17 @@ from streamlit_local_storage import LocalStorage
 # Initialize local storage
 local_storage = LocalStorage()
 
-# Try to retrieve the stored user input
-stored_input = local_storage.getItem("user_input")
-stored_slider_value = local_storage.getItem("slider_value")
-stored_checkbox_value = local_storage.getItem("checkbox_value")
-
 # Default values
 default_input = "Enter something"
 default_slider_value = 50
 default_checkbox_value = False
 
-# Use stored values or default values if not found
+# Try to retrieve the stored user input, slider value, and checkbox value
+stored_input = local_storage.getItem("user_input")
+stored_slider_value = local_storage.getItem("slider_value")
+stored_checkbox_value = local_storage.getItem("checkbox_value")
+
+# If there are no saved settings, use the default values
 if stored_input is None:
     stored_input = default_input
 if stored_slider_value is None:
@@ -22,17 +22,25 @@ if stored_slider_value is None:
 if stored_checkbox_value is None:
     stored_checkbox_value = default_checkbox_value
 
-# Sequential layout
-st.button("Load User Settings")
-st.write(f"User saved: {stored_input}")  # Show user saved text below the "Load User Settings" button
+# Streamlit buttons for loading settings
+if st.button("Load User Settings"):
+    # Load user saved settings
+    user_input = stored_input
+    slider_value = stored_slider_value
+    checkbox_value = stored_checkbox_value
+    st.write(f"User saved text: {user_input}")
 
-st.button("Load Default Settings")
-st.write(f"Default: {default_input}")  # Show default text below the "Load Default Settings" button
+if st.button("Load Default Settings"):
+    # Load default settings
+    user_input = default_input
+    slider_value = default_slider_value
+    checkbox_value = default_checkbox_value
+    st.write(f"Default text: {default_input}")
 
 # Streamlit widgets for user input
-user_input = st.text_input("Enter some text:", value=stored_input)
-slider_value = st.slider("Select a number:", 0, 100, value=stored_slider_value)
-checkbox_value = st.checkbox("Check this box", value=stored_checkbox_value)
+user_input = st.text_input("Enter some text:", value=user_input)
+slider_value = st.slider("Select a number:", 0, 100, value=slider_value)
+checkbox_value = st.checkbox("Check this box", value=checkbox_value)
 
 # Display the input values
 st.write(f"Current text input: {user_input}")
