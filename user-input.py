@@ -37,6 +37,7 @@ if st.button("Load User Settings"):
     st.session_state.slider_value = stored_slider_value
     st.session_state.checkbox_value = stored_checkbox_value
 
+# Display the text to show which settings are loaded
 st.write(f"User saved text: {stored_input}")
 
 if st.button("Load Default Settings"):
@@ -45,8 +46,7 @@ if st.button("Load Default Settings"):
     st.session_state.slider_value = default_slider_value
     st.session_state.checkbox_value = default_checkbox_value
 
-# Display the text to show which settings are loaded
-
+# Display the default text value
 st.write(f"Default text: {default_input}")
 
 # Streamlit widgets for user input
