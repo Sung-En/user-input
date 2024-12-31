@@ -9,7 +9,7 @@ default_input = "Enter something"
 default_slider_value = 50
 default_checkbox_value = False
 
-# Try to retrieve the stored user input, slider, and checkbox values
+# Try to retrieve the stored user input, slider, and checkbox values from local storage
 stored_input = local_storage.getItem("user_input")
 stored_slider_value = local_storage.getItem("slider_value")
 stored_checkbox_value = local_storage.getItem("checkbox_value")
@@ -44,7 +44,7 @@ if st.button("Load Default Settings"):
     st.session_state.checkbox_value = default_checkbox_value
 
 # Display the text to show which settings are loaded
-st.write(f"User saved text: {stored_input}")
+st.write(f"User saved text: {stored_input}")  # Now this shows the saved value directly from local storage
 st.write(f"Default text: {default_input}")
 
 # Streamlit widgets for user input
@@ -64,10 +64,13 @@ if st.button("Save Settings"):
     local_storage.setItem("slider_value", slider_value, key="slider_key")
     local_storage.setItem("checkbox_value", checkbox_value, key="checkbox_key")
 
-    # Update session state with the new values
+    # Update session state with the new values (this will make the UI reflect the changes)
     st.session_state.user_input = user_input
     st.session_state.slider_value = slider_value
     st.session_state.checkbox_value = checkbox_value
+
+    # Re-fetch saved settings to update the displayed "User saved text"
+    stored_input = local_storage.getItem("user_input")
 
     # Show confirmation of the settings saved
     st.write("Settings saved to local storage")
